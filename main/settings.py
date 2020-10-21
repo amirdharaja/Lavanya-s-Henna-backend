@@ -62,9 +62,7 @@ AUTH_USER_MODEL = 'henna.User'
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'http://192.168.43.238:3000',
-    'https://lavanyashenna.herokuapp.com'
+    'https://lavanyashenna.herokuapp.com',
 )
 
 ROOT_URLCONF = 'main.urls'
@@ -89,12 +87,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
-
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-
 }
 
 AUTH_PASSWORD_VALIDATORS = [
