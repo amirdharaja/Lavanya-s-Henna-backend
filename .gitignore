@@ -5,7 +5,13 @@ __pycache__/
 
 # C extensions
 *.so
-
+.vscode
+.idea
+.pyc
+**/__pycache__
+images
+**/images
+/images
 # Distribution / packaging
 .Python
 build/
