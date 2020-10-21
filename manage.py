@@ -1,18 +1,6 @@
 import os
 import sys
 
-from dotenv import load_dotenv
-from pathlib import Path
-
-
-env_path = Path('.') / '.env'
-load_dotenv(dotenv_path=env_path)
-
-ADMINS = os.getenv('ADMINS').split(', ')
-USER = os.getenv('USER')
-MODE = os.getenv('MODE')
-
-
 
 def main():
     """Run administrative tasks."""
@@ -27,16 +15,5 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-
-if USER in ADMINS:
-    print('************************************')
-    print('\n\t{}\n'.format(MODE))
-    print('************************************')
-
-    if __name__ == '__main__':
-        main()
-
-else:
-    print('************************************')
-    print("\n\tUnauthorized access\n")
-    print('************************************')
+if __name__ == '__main__':
+    main()
