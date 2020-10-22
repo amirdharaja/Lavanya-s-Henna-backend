@@ -62,7 +62,8 @@ AUTH_USER_MODEL = 'henna.User'
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
-    'https://lavanyashenna.herokuapp.com',
+    'http://localhost:3000',
+    'http://192.168.43.237:3000',
 )
 
 ROOT_URLCONF = 'main.urls'

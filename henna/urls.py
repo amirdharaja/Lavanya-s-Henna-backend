@@ -32,6 +32,7 @@ from henna.views.common_view import (
     get_main_slide_images,
     get_page_images,
     post_contact_request,
+    get_bridal_package_images,
 )
 from henna.views.admin_view import (
     ContactRequestAPI,
@@ -50,6 +51,7 @@ urlpatterns = [
     path('main-slide-images/', get_main_slide_images),
     path('page-images/', get_page_images),
     path('contact/', post_contact_request),
+    path('package/', get_bridal_package_images),
     re_path(r'contact-requests/', ContactRequestAPI.as_view()),
     re_path(r'images/gallery-images/', GalleryImageAPI.as_view()),
     re_path(r'images/main-slide-images/', MainSlideImageAPI.as_view()),
