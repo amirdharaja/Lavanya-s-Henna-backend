@@ -43,4 +43,4 @@ class PageImageSerializer(ModelSerializer):
 class GalleryImageSerializer(ModelSerializer):
     class Meta:
         model = GalleryImage
-        fields = ('image',)
+        fields = ('image', 'package', 'henna_area')

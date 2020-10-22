@@ -29,7 +29,6 @@ class UserAdmin(admin.ModelAdmin):
         'phone',
     ]
 
-
 class ContactRequestAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -46,6 +45,8 @@ class ContactRequestAdmin(admin.ModelAdmin):
 
 class GalleryImageAdmin(admin.ModelAdmin):
     list_display = (
+        'henna_area',
+        'package',
         'image',
         'created_at',
         'updated_at'

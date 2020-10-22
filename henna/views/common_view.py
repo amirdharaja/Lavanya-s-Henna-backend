@@ -43,7 +43,16 @@ def get_page_images(request, *args, **kwargs):
 
 @api_view(('get',))
 def get_gallery_images(request, *args, **kwargs):
-    gallery_images = GalleryImage.objects.order_by('-created_at')
+    print(request.GET['sort'])
+    sort_by = request.GET['sort']
+    if sort_by == 'h':
+        gallery_images = GalleryImage.objects.filter(henna_area='h').order_by('-created_at')
+    elif sort_by == 'f':
+        gallery_images = GalleryImage.objects.filter(henna_area='f').order_by('-created_at')
+    elif sort_by == 'o':
+        gallery_images = GalleryImage.objects.filter(henna_area='o').order_by('-created_at')
+    else:
+        gallery_images = GalleryImage.objects.order_by('-created_at')
     gallery_images = GalleryImageSerializer(gallery_images, many=True)
 
     data = {
@@ -60,3 +69,18 @@ def post_contact_request(request, *args, **kwargs):
         return Response({'status': True, 'detail': 'New Contact request created successfully', }, status=created)
 
     return Response({'status': False, 'message':serializer.errors}, status=bad_request)
+
+
+@api_view(('get',))
+def get_bridal_package_images(request, *args, **kwargs):
+    print(request.GET['name'])
+    bridal_package_images = GalleryImage.objects.filter(package=request.GET['name']).order_by('-created_at')[:6]
+    if bridal_package_images.count() == 0:
+        bridal_package_images = GalleryImage.objects.order_by('-created_at')[:6]
+
+    bridal_package_images = GalleryImageSerializer(bridal_package_images, many=True)
+
+    data = {
+        'bridal_package_images': bridal_package_images.data,
+    }
+    return Response({'status': True, 'data': data}, status=ok)
