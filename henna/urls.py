@@ -52,9 +52,9 @@ urlpatterns = [
     path('page-images/', get_page_images),
     path('contact/', post_contact_request),
     path('package/', get_bridal_package_images),
-    re_path(r'contact-requests/', ContactRequestAPI.as_view()),
-    re_path(r'images/gallery-images/', GalleryImageAPI.as_view()),
-    re_path(r'images/main-slide-images/', MainSlideImageAPI.as_view()),
-    re_path(r'images/page-images/', PageImageAPI.as_view()),
+    re_path(r'admin/requests/', ContactRequestAPI.as_view()),
+    re_path(r'admin/gallery-images/', GalleryImageAPI.as_view()),
+    re_path(r'admin/main-slide-images/', MainSlideImageAPI.as_view()),
+    re_path(r'admin/page-images/', PageImageAPI.as_view()),
     re_path(r'users/', UserAccountAPI.as_view()),
 ]

@@ -7,6 +7,7 @@ class ContactRequest(Model):
     email       =   CharField(max_length=100, blank=True)
     phone       =   CharField(max_length=13, blank=True)
     details     =   TextField(blank=True)
+    response     =   TextField(blank=True)
     is_responsed     =   BooleanField(default=False)
     created_at  =   DateTimeField(auto_now_add=True, null=True)
     updated_at     =    DateTimeField(auto_now=True, null=True)
