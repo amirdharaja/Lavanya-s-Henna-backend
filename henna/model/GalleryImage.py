@@ -1,4 +1,4 @@
-from django.db.models import Model, Manager, ImageField, DateTimeField, CharField
+from django.db.models import Model, Manager, FileField, DateTimeField, CharField
 
 
 class GalleryImage(Model):
@@ -18,7 +18,7 @@ class GalleryImage(Model):
     ]
 
 
-    image            =    ImageField(upload_to='images/gallery_images', null=False)
+    image            =    FileField(upload_to='gallery_images', null=False)
     package           =    CharField(choices=PACKAGE, max_length=2, default='cb', null=True)
     henna_area           =    CharField(choices=HENNA_AREA, max_length=1, default='o', null=True)
     created_at      =    DateTimeField(auto_now_add=True, null=True)

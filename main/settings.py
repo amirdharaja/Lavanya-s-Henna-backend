@@ -16,7 +16,7 @@ JWT_ALGORITHM = os.getenv('JWT_ALGORITHM')
 SALT = os.getenv('SALT')
 HASHER = os.getenv('HASHER')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -61,7 +61,7 @@ AUTH_USER_MODEL = 'henna.User'
 
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = ('https://lavanyashenna.herokuapp.com',)
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000', ]
 
 ROOT_URLCONF = 'main.urls'
 
@@ -130,4 +130,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
 MEDIA_URL = '/images/'
 
-APPEND_SLASH=False
+APPEND_SLASH = False

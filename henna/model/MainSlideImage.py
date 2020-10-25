@@ -3,7 +3,7 @@ from django.db.models import Model, Manager, FileField, BooleanField, DateTimeFi
 
 class MainSlideImage(Model):
 
-    image            =    FileField(upload_to='images/main_slide_images', null=False)
+    image            =    FileField(upload_to='main_slide_images', null=False)
     created_at      =    DateTimeField(auto_now_add=True, null=True)
     updated_at     =    DateTimeField(auto_now=True, null=True)
 
