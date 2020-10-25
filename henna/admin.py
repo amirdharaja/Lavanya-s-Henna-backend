@@ -32,10 +32,13 @@ class UserAdmin(admin.ModelAdmin):
 class ContactRequestAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'is_responsed',
         'email',
         'phone',
         'details',
+        'response',
         'created_at',
+        'updated_at',
     )
     search_fields = [
         'name',

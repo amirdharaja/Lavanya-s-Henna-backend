@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.status import (
     HTTP_200_OK as ok,
-    HTTP_202_ACCEPTED as accepted,
+    HTTP_201_CREATED as created,
     HTTP_400_BAD_REQUEST as bad_request,
     HTTP_404_NOT_FOUND as not_found,
 )
@@ -19,18 +19,16 @@ from rest_framework.status import (
 def login(request):
     username = request.data.get("username")
     password = request.data.get("password")
-    if username is None or password is None:
-        return Response({'status': False, 'detail': 'Please provide both Username and password'}, status=bad_request)
+    if not username or not password:
+        return Response({'status': False, 'detail': 'USERNAME PASSWORD CAN NOT BE EMPTY'}, status=bad_request)
 
     user = User.objects.filter(username=username).first()
     if not user:
-        user = User.objects.filter(username=username).first()
-        if not user:
-            return Response({'status': False, 'detail': 'User not found. If you are a new user, Please register'}, status=not_found)
+        return Response({'status': False, 'detail': 'USER NOT FOUND'}, status=not_found)
 
     user = auth.authenticate(username=user.username, password=password)
     if not user:
-        return Response({'status': False, 'detail': 'Wrong password'}, status=bad_request)
+        return Response({'status': False, 'detail': 'WRONG PASSWORD'}, status=bad_request)
 
     token, _ = Token.objects.get_or_create(user=user)
 
@@ -45,7 +43,7 @@ def login(request):
         'status': True,
         'token': token.key,
         'data': data,
-    }, status=accepted)
+    }, status=ok)
 
 @api_view(["DELETE"])
 @permission_classes((IsAuthenticated))

@@ -12,7 +12,7 @@ from henna.model.PageImage import PageImage
 class ContactRequestSerializer(ModelSerializer):
     class Meta:
         model = ContactRequest
-        fields = ('name', 'email', 'phone', 'details')
+        fields = ('id', 'is_responsed', 'name', 'email', 'phone', 'details', 'response')
 
 class UserSerializer(ModelSerializer):
     class Meta:
@@ -30,7 +30,7 @@ class UserSerializer(ModelSerializer):
 class MainSlideImageSerializer(ModelSerializer):
     class Meta:
         model = MainSlideImage
-        fields = ('image',)
+        fields = ('id', 'image',)
 
     def post(self, validated_data):
         return MainSlideImage.objects.create(**validated_data)
@@ -38,9 +38,9 @@ class MainSlideImageSerializer(ModelSerializer):
 class PageImageSerializer(ModelSerializer):
     class Meta:
         model = PageImage
-        fields = ('image',)
+        fields = ('id', 'image',)
 
 class GalleryImageSerializer(ModelSerializer):
     class Meta:
         model = GalleryImage
-        fields = ('image', 'package', 'henna_area')
+        fields = ('id', 'image', 'package', 'henna_area')

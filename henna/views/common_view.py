@@ -43,7 +43,6 @@ def get_page_images(request, *args, **kwargs):
 
 @api_view(('get',))
 def get_gallery_images(request, *args, **kwargs):
-    print(request.GET['sort'])
     sort_by = request.GET['sort']
     if sort_by == 'h':
         gallery_images = GalleryImage.objects.filter(henna_area='h').order_by('-created_at')
@@ -73,7 +72,6 @@ def post_contact_request(request, *args, **kwargs):
 
 @api_view(('get',))
 def get_bridal_package_images(request, *args, **kwargs):
-    print(request.GET['name'])
     bridal_package_images = GalleryImage.objects.filter(package=request.GET['name']).order_by('-created_at')[:6]
     if bridal_package_images.count() == 0:
         bridal_package_images = GalleryImage.objects.order_by('-created_at')[:6]
