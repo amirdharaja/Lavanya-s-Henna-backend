@@ -16,7 +16,7 @@ JWT_ALGORITHM = os.getenv('JWT_ALGORITHM')
 SALT = os.getenv('SALT')
 HASHER = os.getenv('HASHER')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
